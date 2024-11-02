@@ -1,0 +1,46 @@
+﻿body {
+    height: 100%;
+    margin: 0;
+}
+
+.hero-image {
+    margin-top: 70px;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image: url(/images/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-text {
+    position: absolute;
+    top: 72%;
+    left: 10%;
+    transform: translateY(-50px);
+    color: white;
+}
+
+.btn-tix {
+    position: absolute;
+    top: 81%;
+    left: 10%;
+    transform: translateY(-50px);
+    background-color: #BAAE99;
+    font-size: 19px;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+}
+
+    .btn-tix:hover {
+        background-color: #A89784;
+    }
+
+.white-space {
+    margin: 7%;
+}
