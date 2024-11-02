@@ -44,3 +44,126 @@
 .white-space {
     margin: 7%;
 }
+
+.offer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.offer-card {
+    height: 530px;
+    width: 1000px;
+    padding: 20px 35px;
+    background-color: #625D4A;
+    border-radius: 20px;
+    margin: 15px;
+    text-align: center;
+}
+
+.offer-title h2,
+.offer-title p {
+    text-align: left;
+    color: white;
+}
+
+.offer-title p {
+    margin-top: 5px;
+}
+
+.offer-title h2 {
+    margin-bottom: 4px;
+}
+
+.card1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+#mem {
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+
+    .text-overlay h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .text-overlay p {
+        margin: 2px 0 5px 0;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+a.offer-btn {
+    background-color: #BAAE99;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+    a.offer-btn:hover {
+        background-color: #A89784;
+    }
+
+.text-under a.offer-btn {
+    background-color: #BAAE99;
+    color: white;
+    font-size: 14px;
+    padding: 5px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+    .text-under a.offer-btn:hover {
+        background-color: #A89784;
+    }
+
+.text-under {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    color: white;
+    padding: 8px;
+}
+
+    .text-under h2 {
+        margin: 0px;
+        font-size: 24px;
+    }
+
+    .text-under p {
+        overflow: hidden;
+        margin: 2px 0 6px;
+        font-size: 12px;
+    }
