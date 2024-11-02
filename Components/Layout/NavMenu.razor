@@ -1,12 +1,24 @@
-﻿<nav class="navbar">
+﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nav class="navbar">
     <div class="navbar-logo">
         <h1>RZA</h1>
     </div>
 
     <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/">Explore</a></li>
-        <li><a href="/">Plan Your Visit</a></li>
-        <li><a href="/">Education</a></li>
+        <li><a href="/"><i class="bi bi-house-fill"></i>Home</a></li>
+
+        <li><a href="/"><i class="bi bi-binoculars-fill"></i>Explore</a></li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" id="planVisitDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-geo-alt-fill"></i>Plan Your Visit</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><i class="bi bi-car-front-fill"></i> Transport</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-building"></i> Hotel Stay</a></li>
+            </ul>
+        </li>
+
+        <li><a href="/"><i class="bi bi-book-fill"></i>Education</a></li>
     </ul>
 </nav> 
