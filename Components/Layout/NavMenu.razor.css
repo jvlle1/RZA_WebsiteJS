@@ -13,6 +13,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
 }
 
     .navbar .navbar-logo h1 {
@@ -30,15 +35,15 @@
             position: relative;
         }
 
-        .navbar ul li a {
-            text-decoration: none;
-            font-size: 18px;
-            color: white;
-            padding: 10px;
-        }
+            .navbar ul li a {
+                text-decoration: none;
+                font-size: 18px;
+                color: white;
+                padding: 10px;
+            }
 
 ul.dropdown-menu {
-    display: none;
+    display: none; /* hides dropdown */
     position: absolute;
     top: 100%;
     background-color: #345A54;
@@ -60,6 +65,47 @@ ul.dropdown-menu {
         font-size: 16px;
     }
 
+    .dropdown-menu a:visited {
+        background-color: #345A54; /* ensures visited links retain the original color */
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:active {
+        background-color: #2D4B45;
+        border-radius: 5px;
+        color: white;
+    }
+
+/* only show thead dropdown when hovering content thead link */
 .navbar ul li:hover .dropdown-menu {
     display: block;
 }
+
+.btn-1 {
+    font-family: Arial;
+    color: black;
+    background: none;
+    border: none;
+    padding: 10px 19px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+    .btn-1:hover {
+        color: slategrey;
+    }
+
+.btn-2{
+    background-color: #BAAE99;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 10px 19px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+    .btn:hover {
+        background-color: #A89784;
+    }
