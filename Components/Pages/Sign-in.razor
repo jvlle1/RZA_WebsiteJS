@@ -1,45 +1,79 @@
-﻿<link rel="stylesheet" href="css/styles.css" />
+﻿@page "/Sign-in"
+@using RZA_WebsiteJS.Models
 
-@page "/Sign-in"
+@inject RZA_WebsiteJS.Services.CustomerService CustomerService
+@inject NavigationManager NavigationManager
+
+@rendermode InteractiveServer
 
 <PageTitle>Sign-in</PageTitle>
 
-<div class="signin-container">
-   
+<link rel="stylesheet" href="css/styles.css" />
 
-    <div class="signin-card">
+
+
+<div class="sign-container">
+
+    <div class="sign-card">
         <div class="image-side">
             <img src="/images/log-in image.jpg" id="mem" width="300" />
         </div>
     
         <div class="form-side">
-            <h2>Sign-in</h2>
+            <EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FormName="LoginForm">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                
+                <h2>Sign-in</h2>
 
-            <div class="input-box">
-                <input type="email" class="input-field" placeholder="Email" autocomplete="off" required />
-            </div>
+                <div class="input-box">
+                    <InputText @bind-Value="newCustomer.Username" type="username" class="input-field" placeholder="Email" autocomplete="off" required />
+                </div>
 
-            <div class="input-box">
-                <input type="password" class="input-field" placeholder="Password" required />
-            </div>
+                <div class="input-box">
+                    <InputText @bind-Value="newCustomer.Passsword" type="password" class="input-field" placeholder="Password" required />
+                </div>
 
-            <div class="options">
-                <section>
-                    <input type="checkbox" id="check" />
-                    <label for="check">Remember me</label>
-                </section>
-                <section>
-                    <a href="">Forgot Password?</a>
-                </section>
-            </div>
+                <div class="options">
+                    <section>
+                        <input type="checkbox" id="check" />
+                        <label for="check">Remember me</label>
+                    </section>
+                    <section>
+                        <a href="">Forgot password?</a>
+                    </section>
+                </div>
 
-            <input type="submit" class="submit-btn" value="Sign in" />
+                <input class="submit-btn" type="submit" value="Sign In" />
+            </EditForm>
 
             <div class="sign-up-link">
-                <p>Dont have an account? <a href="">Sign Up Now</a></p>
+                <p>Dont Have An Account? <a href="/sign-up">Sign Up Now</a></p>
             </div>
         </div>
     </div>
 
 </div>
+
+
+
+@code {
+    private Customer newCustomer = new Customer();
+    private string passsword;
+
+    private async Task HandleValidSubmit()
+    {
+        newCustomer.Passsword = passsword;
+        newCustomer = await CustomerService.LogIn(newCustomer);
+        if (newCustomer == null)
+        {
+            Console.WriteLine("Could not log in");
+        }
+        else
+        {
+            NavigationManager.NavigateTo("/account");
+        }
+    }
+
+}
 
