@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using RZA_WebsiteJS.Components;
+using RZA_WebsiteJS.Models;
 
 namespace RZA_WebsiteJS
 {
@@ -11,6 +13,11 @@ namespace RZA_WebsiteJS
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+
+            builder.Services.AddDbContext<TlS2302721RzaContext>(options => 
+                options.UseMySql(builder.Configuration.GetConnectionString("MySqlConnection"), 
+                new MySqlServerVersion(new Version(8, 0, 29))));
+
 
             var app = builder.Build();
 
