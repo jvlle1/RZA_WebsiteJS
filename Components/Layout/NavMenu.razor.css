@@ -27,7 +27,7 @@
 
     .navbar ul{
         list-style: none;
-        gap: 25px;
+        gap: 40px;
         display: flex;
     }
 
@@ -37,7 +37,7 @@
 
             .navbar ul li a {
                 text-decoration: none;
-                font-size: 18px;
+                font-size: 20px;
                 color: white;
                 padding: 10px;
             }
