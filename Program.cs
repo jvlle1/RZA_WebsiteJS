@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RZA_WebsiteJS.Components;
 using RZA_WebsiteJS.Models;
+using RZA_WebsiteJS.Services;
 
 namespace RZA_WebsiteJS
 {
@@ -18,6 +19,7 @@ namespace RZA_WebsiteJS
                 options.UseMySql(builder.Configuration.GetConnectionString("MySqlConnection"), 
                 new MySqlServerVersion(new Version(8, 0, 29))));
 
+            builder.Services.AddScoped<CustomerService>();
 
             var app = builder.Build();
 
