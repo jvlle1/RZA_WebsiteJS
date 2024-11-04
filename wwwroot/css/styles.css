@@ -1,0 +1,121 @@
+﻿body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Eras ITC';
+}
+
+.signin-container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.signin-card {
+    height: auto;
+    width: 740px;
+    padding: 20px 35px;
+    background-color: #625D4A;
+    border-radius: 20px;
+    margin: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+
+.image-side {
+    margin: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.form-side {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .form-side h2 {
+        text-align: center;
+        color: white;
+        font-weight: 600;
+        margin: 20px 0 20px 0;
+    }
+
+.input-box .input-field {
+    width: 100%;
+    height: 40px;
+    font-size: 17px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #CAC8C8;
+    outline: none;
+    border-style: solid;
+    border-color: black;
+    border-width: 1.5px;
+}
+
+::placeholder {
+    font-weight: 400;
+    color: white
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+}
+
+#check {
+    margin-right: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+        color: #BAAE99;
+    }
+
+section a {
+    color: white;
+}
+
+.submit-btn {
+    position: relative;
+    color: white;
+    font-size: 16px;
+    padding: 3px 0;
+    border-radius: 5px;
+    border-style: none;
+    background-color: #BAAE99;
+}
+
+    .submit-btn:hover {
+        background-color: #A89784;
+    }
+
+.sign-up-link {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+    .sign-up-link a {
+        color: black;
+        font-weight: 500;
+    }
