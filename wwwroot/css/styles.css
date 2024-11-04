@@ -4,7 +4,7 @@
     font-family: 'Eras ITC';
 }
 
-.signin-container {
+.sign-container {
     margin-top: 80px;
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@
     min-height: 400px;
 }
 
-.signin-card {
+.sign-card {
     height: auto;
     width: 740px;
     padding: 20px 35px;
@@ -24,6 +24,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
+    gap: 20px;
 }
 
 
@@ -31,6 +32,7 @@
     margin: 10px;
     background-size: cover;
     background-position: center;
+    justify-content: center;
 }
 
 .form-side {
@@ -95,11 +97,12 @@ section a {
     color: white;
 }
 
-.submit-btn {
+input.submit-btn {
     position: relative;
+    width: 100%;
     color: white;
     font-size: 16px;
-    padding: 3px 0;
+    padding: 3px 20px;
     border-radius: 5px;
     border-style: none;
     background-color: #BAAE99;
@@ -119,3 +122,9 @@ section a {
         color: black;
         font-weight: 500;
     }
+
+.names {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between; 
+}
