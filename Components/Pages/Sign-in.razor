@@ -1,16 +1,17 @@
-﻿@page "/Sign-in"
+﻿@page "/Sign"
 @using RZA_WebsiteJS.Models
+@using RZA_WebsiteJS.Utilities
+@using RZA_WebsiteJS.Services
 
-@inject RZA_WebsiteJS.Services.CustomerService CustomerService
+@inject CustomerService CustomerService
 @inject NavigationManager NavigationManager
+@inject UserSession UserSession
 
 @rendermode InteractiveServer
 
 <PageTitle>Sign-in</PageTitle>
 
-<link rel="stylesheet" href="css/styles.css" />
-
-
+<link rel="stylesheet" a href="/css/styles.css" />
 
 <div class="sign-container">
 
@@ -27,7 +28,7 @@
                 <h2>Sign-in</h2>
 
                 <div class="input-box">
-                    <InputText @bind-Value="newCustomer.Username" type="username" class="input-field" placeholder="Email" autocomplete="off" required />
+                    <InputText @bind-Value="newCustomer.Username" type="username" class="input-field" placeholder="Username" autocomplete="off" required />
                 </div>
 
                 <div class="input-box">
@@ -40,15 +41,19 @@
                         <label for="check">Remember me</label>
                     </section>
                     <section>
-                        <a href="">Forgot password?</a>
+                        <a href="/Modifyacc">Forgot password?</a>
                     </section>
                 </div>
 
-                <input class="submit-btn" type="submit" value="Sign In" />
+                <div>
+                    <label style="color: red">@message</label>
+                </div>
+                <button type="submit" class="submit-btn">Sign In</button>
+                
             </EditForm>
 
             <div class="sign-up-link">
-                <p>Dont Have An Account? <a href="/sign-up">Sign Up Now</a></p>
+                <p>Dont Have An Account? <a href="/Sign-up">Sign Up Now</a></p>
             </div>
         </div>
     </div>
@@ -60,6 +65,15 @@
 @code {
     private Customer newCustomer = new Customer();
     private string passsword;
+    private string message;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UserSession.UserId != 0)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+    }
 
     private async Task HandleValidSubmit()
     {
@@ -68,10 +82,13 @@
         if (newCustomer == null)
         {
             Console.WriteLine("Could not log in");
+            message = "could not log in;";
         }
         else
         {
-            NavigationManager.NavigateTo("/account");
+            UserSession.UserId = newCustomer.CustomerId;
+
+            NavigationManager.NavigateTo("/"); /* will lead to account page soon */
         }
     }
 
