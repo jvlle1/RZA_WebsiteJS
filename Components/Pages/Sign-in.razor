@@ -20,6 +20,7 @@
             <img src="/images/log-in image.jpg" id="mem" width="300" />
         </div>
     
+
         <div class="form-side">
             <EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FormName="LoginForm">
                 <DataAnnotationsValidator />
@@ -32,7 +33,7 @@
                 </div>
 
                 <div class="input-box">
-                    <InputText @bind-Value="newCustomer.Passsword" type="password" class="input-field" placeholder="Password" required />
+                    <InputText @bind-Value=@passsword type="password" class="input-field" placeholder="Password" required />
                 </div>
 
                 <div class="options">
@@ -82,11 +83,17 @@
         if (newCustomer == null)
         {
             Console.WriteLine("Could not log in");
-            message = "could not log in;";
+           
         }
         else
         {
             UserSession.UserId = newCustomer.CustomerId;
+            message = "LOGGED IN";
+
+            StateHasChanged(); // Refresh the UI to display the message immediately.
+            await Task.Delay(2000); 
+
+
 
             NavigationManager.NavigateTo("/"); /* will lead to account page soon */
         }
