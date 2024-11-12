@@ -11,7 +11,7 @@ namespace RZA_WebsiteJS.Services
         public CustomerService(TlS2302721RzaContext context)
         {
             _context = context;
-        }   
+        }
 
         public async Task AddCustomerAsync(Customer customer)
         {
@@ -24,6 +24,18 @@ namespace RZA_WebsiteJS.Services
             return await _context.Customers.FirstOrDefaultAsync(
                 c => c.Username == customer.Username &&
                 c.Passsword == customer.Passsword);
+        }
+
+        public async Task ChangePassword(int customerId, string hashedOldPassword, string hashedNewPassword)
+        {
+            Customer? customer = await _context.Customers.SingleOrDefaultAsync(
+                c => c.CustomerId == customerId &&
+                c.Passsword == hashedOldPassword);
+            if (customer != null)
+            {
+                customer.Passsword = hashedNewPassword;
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
