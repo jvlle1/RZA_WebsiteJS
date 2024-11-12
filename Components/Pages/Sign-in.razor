@@ -78,7 +78,7 @@
 
     private async Task HandleValidSubmit()
     {
-        newCustomer.Passsword = passsword;
+        newCustomer.Passsword = PasswordUtils.HashPassword(passsword);
         newCustomer = await CustomerService.LogIn(newCustomer);
         if (newCustomer == null)
         {

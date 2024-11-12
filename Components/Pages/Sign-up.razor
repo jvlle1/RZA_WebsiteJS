@@ -68,6 +68,9 @@
 
     private async Task HandleValidSubmit()
     {
+
+        newCustomer.Passsword = PasswordUtils.HashPassword(newCustomer.Passsword);
+
         // insert new user to database
         await CustomerService.AddCustomerAsync(newCustomer);
         message = "You have successfully registered";
