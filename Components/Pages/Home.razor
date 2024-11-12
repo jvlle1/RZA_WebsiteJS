@@ -1,4 +1,11 @@
-﻿@page "/"
+﻿@using RZA_WebsiteJS.Components
+@using RZA_WebsiteJS.Utilities
+@inject UserSession UserSession
+@inject NavigationManager NavigationManager
+
+@rendermode InteractiveServer
+
+@page "/"
 
 <PageTitle>Home</PageTitle>
 
@@ -56,3 +63,27 @@
     </div>
 
 </section>
+
+
+@if (UserSession.UserId == 0)
+{
+    <h1>you need to log in</h1>
+}
+else
+{
+    <h1>your userid is @UserSession.UserId</h1>
+    <button onclick=@Modify>Modify your account</button>
+}
+
+@code {
+    private bool dialogShown = false;
+
+    private void ShowDialog()
+    {
+        dialogShown = true;
+    }
+    private void Modify()
+    {
+        NavigationManager.NavigateTo("/Modifyacc"); 
+    }
+}
