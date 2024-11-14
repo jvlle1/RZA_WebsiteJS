@@ -46,9 +46,10 @@
                     </section>
                 </div>
 
-                <div>
-                    <label style="color: red">@message</label>
-                </div>
+                
+                <label style="color: white; background-color: #345A54">@message</label>
+
+                <br>
                 <button type="submit" class="submit-btn">Sign In</button>
                 
             </EditForm>
@@ -82,18 +83,24 @@
         newCustomer = await CustomerService.LogIn(newCustomer);
         if (newCustomer == null)
         {
-            Console.WriteLine("Could not log in");
+            message = "Please Enter an Existing User";
+            // clears form
+            newCustomer = new Customer();
+            passsword = "";
+            StateHasChanged(); // Refresh UI to show error message
+
+            await Task.Delay(2000);
+            message = ""; // clears message
+            StateHasChanged(); // Refresh UI to remove the message
            
         }
         else
         {
             UserSession.UserId = newCustomer.CustomerId;
-            message = "LOGGED IN";
+            message = "Logged In Successfully";
 
-            StateHasChanged(); // Refresh the UI to display the message immediately.
-            await Task.Delay(2000); 
-
-
+            StateHasChanged(); // Refresh the UI to display the message first before navigating.
+            await Task.Delay(1000); 
 
             NavigationManager.NavigateTo("/"); /* will lead to account page soon */
         }
