@@ -1,0 +1,47 @@
+﻿@using RZA_WebsiteJS.Models
+@using RZA_WebsiteJS.Services
+@inject AttractionService AttractionService
+
+@page "/Tickets"
+
+<h3>Tickets</h3>
+
+<link rel="stylesheet" a href="/css/styles.css" />
+
+
+@if (attractions != null)
+{
+    @foreach (Attraction attraction in attractions)
+    {
+        <div>
+            @attraction.Name: £@attraction.Entryfee
+            <button @onclick="@(e => AddTicket(attraction.AttractionId))">Add to Basket</button>
+        </div>
+    }
+    <button>Book Tickets</button>
+}
+else
+{
+<div>no attractions</div>
+}
+
+@code {
+    List<Attraction> attractions;
+    List<Zooticket> tickets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        attractions = await AttractionService.GetAttractionsAsync();
+        tickets = new List<Zooticket>();
+    }
+    private void AddTicket(int attractionId)
+    {
+        Zooticket newTicket = new Zooticket();
+        newTicket.AttractionId = attractionId;
+        newTicket.Bookingdate = DateOnly.FromDateTime(DateTime.Now);
+    }
+    private void BookTicekts()
+    {
+
+    }
+}
