@@ -23,6 +23,8 @@ namespace RZA_WebsiteJS
 
             builder.Services.AddScoped<CustomerService>();
             builder.Services.AddScoped<AttractionService>();
+            builder.Services.AddScoped<TicketService>();
+            builder.Services.AddScoped<TicketbookingService>();
             builder.Services.AddSingleton<UserSession>();
 
             var app = builder.Build();

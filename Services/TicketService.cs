@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RZA_WebsiteJS.Models;
 
 namespace RZA_WebsiteJS.Services
@@ -23,7 +22,3 @@ namespace RZA_WebsiteJS.Services
         }
     }
 }
-
-
-
-
