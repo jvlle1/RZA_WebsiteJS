@@ -24,6 +24,8 @@
         </div>
     }
     <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=@ticketDate>
+
+    <label style="color: white; background-color: #345A54">@message</label>
     <button @onclick=@BookTickets>Book Tickets</button>
 }
 else
@@ -31,11 +33,14 @@ else
     <div>no attractions</div>
 }
 
+
+
 @code {
     List<Attraction> attractions;
     List<Ticket> tickets;
     DateOnly ticketDate;
     Ticketbooking newTicketbooking;
+    private string message;
 
     protected override async Task OnInitializedAsync()
     {
@@ -58,10 +63,17 @@ else
     }
     private async Task BookTickets()
     {
+
+        if (tickets.Count == 0)
+        {
+            message = "Please Add Something in Your Basket";
+            return;
+        }
+
         //this one books all the tickets in the basket
         Ticketbooking newTicketbooking = new Ticketbooking();
         newTicketbooking.CustomerId = UserSession.UserId;
-        newTicketbooking.Date = ticketDate;
+        newTicketbooking.DateBooked = ticketDate;
         newTicketbooking.Date = DateOnly.FromDateTime(DateTime.Now);
         await TicketbookingService.AddTicketbookingAsync(newTicketbooking);
         foreach (Ticket ticket in tickets)
