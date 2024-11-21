@@ -32,8 +32,6 @@ public partial class TlS2302721RzaContext : DbContext
 
     public virtual DbSet<Ticketbooking> Ticketbookings { get; set; }
 
-    public virtual DbSet<Type> Types { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseMySql("name=MySqlConnection", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
 
@@ -135,25 +133,17 @@ public partial class TlS2302721RzaContext : DbContext
 
         modelBuilder.Entity<Room>(entity =>
         {
-            entity.HasKey(e => new { e.RoomNumber, e.TypeId })
-                .HasName("PRIMARY")
-                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+            entity.HasKey(e => e.RoomNumber).HasName("PRIMARY");
 
             entity.ToTable("rooms");
 
-            entity.HasIndex(e => e.TypeId, "rooms_fk_1_idx");
-
-            entity.Property(e => e.RoomNumber).HasColumnName("roomNumber");
-            entity.Property(e => e.TypeId).HasColumnName("typeID");
+            entity.Property(e => e.RoomNumber)
+                .ValueGeneratedNever()
+                .HasColumnName("roomNumber");
             entity.Property(e => e.Capacity).HasColumnName("capacity");
             entity.Property(e => e.RoomType)
                 .HasMaxLength(20)
                 .HasColumnName("roomType");
-
-            entity.HasOne(d => d.Type).WithMany(p => p.Rooms)
-                .HasForeignKey(d => d.TypeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("rooms_fk_1");
         });
 
         modelBuilder.Entity<Roombooking>(entity =>
@@ -175,6 +165,11 @@ public partial class TlS2302721RzaContext : DbContext
                 .HasForeignKey(d => d.CustomerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("roombookings_ibfk_2");
+
+            entity.HasOne(d => d.RoomNumberNavigation).WithMany(p => p.Roombookings)
+                .HasForeignKey(d => d.RoomNumber)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("roombookings_ibfk_1");
         });
 
         modelBuilder.Entity<Ticket>(entity =>
@@ -219,17 +214,6 @@ public partial class TlS2302721RzaContext : DbContext
                 .HasForeignKey(d => d.CustomerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("ticketbooking_fk1");
-        });
-
-        modelBuilder.Entity<Type>(entity =>
-        {
-            entity.HasKey(e => e.TypeId).HasName("PRIMARY");
-
-            entity.ToTable("type");
-
-            entity.Property(e => e.TypeId)
-                .ValueGeneratedNever()
-                .HasColumnName("typeID");
         });
 
         OnModelCreatingPartial(modelBuilder);

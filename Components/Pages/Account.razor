@@ -1,0 +1,42 @@
+﻿@using RZA_WebsiteJS.Utilities
+@using RZA_WebsiteJS.Services
+@using RZA_WebsiteJS.Models
+@inject CustomerService CustomerService
+@inject UserSession UserSession
+@inject NavigationManager NavigationManager
+
+@page "/Account"
+
+<link rel="stylesheet" a href="/css/styles.css" />
+
+
+@if (customer != null)
+{
+    <h2>Hello, @customer.FirstName @customer.LastName </h2>
+    <button @onclick="OverToBooking">Book tickets</button>
+}
+
+@code {
+    private Customer customer;
+
+    private bool loaded = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UserSession.UserId == 0)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            customer = await CustomerService.GetCustomerFromIdAsync(UserSession.UserId);
+        }
+    }
+
+    private async Task OverToBooking()
+    {
+        NavigationManager.NavigateTo("/Bookinghotel");
+    }
+
+   
+}

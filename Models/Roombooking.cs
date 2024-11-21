@@ -14,4 +14,6 @@ public partial class Roombooking
     public DateOnly? EndDate { get; set; }
 
     public virtual Customer Customer { get; set; } = null!;
+
+    public virtual Room RoomNumberNavigation { get; set; } = null!;
 }

@@ -37,5 +37,10 @@ namespace RZA_WebsiteJS.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<Customer> GetCustomerFromIdAsync(int id)
+        {
+            return await _context.Customers.FirstAsync(c => c.CustomerId == id);
+        }
     }
 }

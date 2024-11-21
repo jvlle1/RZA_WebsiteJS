@@ -1,0 +1,80 @@
+﻿﻿@using RZA_WebsiteJS.Utilities
+@using RZA_WebsiteJS.Services
+@using RZA_WebsiteJS.Models
+@inject UserSession UserSession
+@inject RoomService RoomService
+@inject RoombookingService RoombookingService
+@inject CustomerService CustomerService
+@inject NavigationManager NavigationManager
+
+<h3>Bookinghotel</h3>
+
+<link rel="stylesheet" href="css/styles.css" />
+
+@page "/Bookinghotel"
+
+@if (rooms != null)
+{
+    <ul>
+        @foreach (var room in rooms)
+        {
+            <li>Room @room.RoomNumber: @room.RoomType for @room.Capacity people</li>
+        }
+    </ul>
+}
+
+<div>
+    @if (rooms != null)
+    {
+        <select @bind=Roomnumber>
+            @foreach (var room in rooms)
+            {
+                <option value=@room.RoomNumber>@room.RoomType</option>
+
+            }
+        </select>
+    }
+    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=startDate>
+    <select @bind=Days>
+        @for (int i = 1; i <= 7; i++)
+        {
+            <option value=@i>@i Days</option>
+        }
+    </select>
+    <button @onclick=BookRoom>Book this room</button>
+</div>
+
+
+@code {
+    private Customer customer;
+    private List<Room> rooms;
+
+    private DateOnly startDate;
+
+    private Room Room;
+    private int Roomnumber;
+    private int Days;
+
+    private bool loaded = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        rooms = await RoomService.GetRoomsAsync();
+        if (UserSession.UserId == 0)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            customer = await CustomerService.GetCustomerFromIdAsync(UserSession.UserId);
+        }
+    }
+
+    private async Task BookRoom()
+    {
+        Console.WriteLine(Roomnumber);
+        Room = await RoomService.GetRoomAsync(Roomnumber);
+        await RoombookingService.AddRoombookingAsync(customer, Room, startDate, Days);
+
+    }
+}
