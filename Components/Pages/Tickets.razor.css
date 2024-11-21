@@ -8,7 +8,7 @@
 
 .ticket-card {
     height: 400px;
-    width: 1000px;
+    width: 850px;
     padding: 20px 35px;
     background-color: #625D4A;
     border-radius: 20px;
@@ -32,22 +32,25 @@ button.book-btn {
     background-color: #BAAE99;
 }
 
-    button.submit-book:hover {
-        background-color: #A89784;
-    }
-
-button.addBasket-btn {
-    position: relative;
-    margin: 5px 10px;
-    color: white;
-    font-size: 16px;
-    padding: 1px 8px;
-    border-radius: 50%;
-    border-style: none;
-    background-color: #BAAE99;
+button.submit-book:hover {
+    background-color: #A89784;
 }
 
-.title-text{
+button.addBasket-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    border-radius: 50%;
+    border: none;
+    background-color: #BAAE99;
+    color: white;
+    margin: 0;
+}
+
+.title-text {
     margin-top: 50px;
     text-align: center;
 }
@@ -63,9 +66,16 @@ button.addBasket-btn {
     display: flex;
 }
 
-.ticket-content {
-    display: flex;
-    gap: 7%;
+.ticket-side h2 {
+    margin-bottom: 15px;
 }
 
+.ticket-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 45px;
+}
 
+.bsk-btn {
+    margin-top: 4px;
+}
