@@ -9,30 +9,52 @@
 
 @page "/Tickets"
 
-<h3>Tickets</h3>
-
 <link rel="stylesheet" a href="/css/styles.css" />
 
+<div class="title-text">
+    <h1>BOOKING IN PROGRESS...</h1>
+    <p>Zoo Location: Glanwydden, Llandudno, LL31 9JP</p>
+</div>
 
 @if (attractions != null)
 {
-    @foreach (Attraction attraction in attractions)
-    {
-        <div>
-            @attraction.Name: £@attraction.Entryfee
-            <button @onclick="@(e => AddTicket(attraction.AttractionId))">Add to Basket</button>
-        </div>
-    }
-    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=@ticketDate>
+    <section class="ticket-container">
+        <div class="ticket-card">
+            <div class="ticket-side">
+                <h2>Tickets:</h2>
+                @foreach (Attraction attraction in attractions)
+                {
+                    <div class="ticket-content">
+                        <div class="text">
+                            @attraction.Name
+                            <p style="text-align: left">£@attraction.Entryfee</p>
+                        </div>
+                        <div class="bsk-btn">
+                            <button class="addBasket-btn" @onclick="@(e => AddTicket(attraction.AttractionId))">+</button>
+                        </div>
+                    </div>
+                }
 
-    <label style="color: white; background-color: #345A54">@message</label>
-    <button @onclick=@BookTickets>Book Tickets</button>
+                <input type="date" class="bk-date" value="@DateTime.Now.ToString("yyyy-MM-dd")" min=@DateTime.Now.ToString("yyyy-MM-dd") =@ticketDate>
+
+                <label style="color: white; background-color: #345A54">@message</label>
+                <button class="book-btn" @onclick=@BookTickets>Book Tickets</button>
+            </div>
+        </div>
+    </section>
 }
 else
 {
     <div>no attractions</div>
 }
 
+@if (tickets != null && tickets.Count != 0)
+{
+    @foreach (Ticket ticket in tickets)
+    {
+        <div>@ticket.TicketId, @ticket.AttractionId</div>
+    }
+}
 
 
 @code {

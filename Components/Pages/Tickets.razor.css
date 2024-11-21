@@ -1,0 +1,71 @@
+﻿.ticket-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.ticket-card {
+    height: 400px;
+    width: 1000px;
+    padding: 20px 35px;
+    background-color: #625D4A;
+    border-radius: 20px;
+    margin: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+button.book-btn {
+    position: relative;
+    margin: 10px;
+    width: 50%;
+    color: white;
+    font-size: 16px;
+    padding: 3px 20px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: #BAAE99;
+}
+
+    button.submit-book:hover {
+        background-color: #A89784;
+    }
+
+button.addBasket-btn {
+    position: relative;
+    margin: 5px 10px;
+    color: white;
+    font-size: 16px;
+    padding: 1px 8px;
+    border-radius: 50%;
+    border-style: none;
+    background-color: #BAAE99;
+}
+
+.title-text{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.bk-date {
+    border-style: none;
+    background-color: white;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.ticket-card {
+    display: flex;
+}
+
+.ticket-content {
+    display: flex;
+    gap: 7%;
+}
+
+
