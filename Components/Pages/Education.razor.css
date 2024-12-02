@@ -1,0 +1,82 @@
+﻿body {
+    height: 100%;
+    margin: 0;
+}
+
+.hero-image {
+    height: 50vh; 
+    overflow: hidden;
+    position: relative;
+}
+
+    .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.container-card {
+    background-color: #625D4A; 
+    height: 100px;
+    width: 95%; 
+    border-radius: 20px;
+    position: relative;
+    margin: 0 auto; 
+    top: -50px; 
+}
+
+.content {
+    padding-top: 10px;
+}
+
+    .content h2{
+        margin-bottom: 2px;
+    }
+    .content h2, p{
+        padding: 0px 0px 0px 0px;
+        text-align: center;
+        color: white;
+    }
+
+
+#education {
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    margin-top: 130px;
+     
+}
+.edu-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 80%;
+    gap: 120px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+    #education .edu-container .education-content-1 {
+        max-width: 500px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    }
+
+
+
+.edu-container .education-content-1 h2, p{
+    color: black;
+
+}
+
+    .edu-container .education-content-1 p {
+        text-align: left;
+    }
+
+.image-1 img {
+    max-width: 310px; 
+    object-fit: cover; 
+}
