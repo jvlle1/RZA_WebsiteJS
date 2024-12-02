@@ -44,8 +44,25 @@
     justify-content: center; 
     flex-direction: column;
     margin-top: 130px;
-     
 }
+
+.edu-title {
+    margin: 0px 50px 50px 50px;
+}
+
+.edu-title h1 {
+    text-align: center; 
+    font-size: 30px;
+}
+
+.line {
+    width: 200px;
+    height: 4px;
+    background: #625D4A;
+    margin: 10px auto;
+    border-radius: 20px;
+}
+
 .edu-container {
     display: flex;
     flex-direction: row;
@@ -65,11 +82,8 @@
         justify-content: center;
     }
 
-
-
 .edu-container .education-content-1 h2, p{
     color: black;
-
 }
 
     .edu-container .education-content-1 p {
