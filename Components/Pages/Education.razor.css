@@ -38,6 +38,10 @@
         color: white;
     }
 
+    .content p {
+        color: white;
+    }
+
 
 #education {
     display: flex;
