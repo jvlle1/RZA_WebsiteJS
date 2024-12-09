@@ -17,15 +17,7 @@ public partial class Customer
 
     public string? Email { get; set; }
 
-    public string? Postcode { get; set; }
-
-    public string? PhoneNumber { get; set; }
-
-    public DateOnly? DateOfBirth { get; set; }
-
     public int? LoyaltyPoints { get; set; }
-
-    public virtual ICollection<Educationalbooking> Educationalbookings { get; set; } = new List<Educationalbooking>();
 
     public virtual ICollection<Roombooking> Roombookings { get; set; } = new List<Roombooking>();
 

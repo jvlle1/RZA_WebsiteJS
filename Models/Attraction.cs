@@ -11,7 +11,5 @@ public partial class Attraction
 
     public float? Entryfee { get; set; }
 
-    public virtual ICollection<Educationalticket> Educationaltickets { get; set; } = new List<Educationalticket>();
-
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }

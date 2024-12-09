@@ -20,10 +20,6 @@ public partial class TlS2302721RzaContext : DbContext
 
     public virtual DbSet<Customer> Customers { get; set; }
 
-    public virtual DbSet<Educationalbooking> Educationalbookings { get; set; }
-
-    public virtual DbSet<Educationalticket> Educationaltickets { get; set; }
-
     public virtual DbSet<Room> Rooms { get; set; }
 
     public virtual DbSet<Roombooking> Roombookings { get; set; }
@@ -62,12 +58,9 @@ public partial class TlS2302721RzaContext : DbContext
 
             entity.HasIndex(e => e.Email, "email").IsUnique();
 
-            entity.HasIndex(e => e.PhoneNumber, "phoneNumber").IsUnique();
-
             entity.HasIndex(e => e.Username, "username").IsUnique();
 
             entity.Property(e => e.CustomerId).HasColumnName("customerID");
-            entity.Property(e => e.DateOfBirth).HasColumnName("dateOfBirth");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .HasColumnName("email");
@@ -81,54 +74,9 @@ public partial class TlS2302721RzaContext : DbContext
             entity.Property(e => e.Passsword)
                 .HasMaxLength(255)
                 .HasColumnName("passsword");
-            entity.Property(e => e.PhoneNumber)
-                .HasMaxLength(11)
-                .HasColumnName("phoneNumber");
-            entity.Property(e => e.Postcode)
-                .HasMaxLength(8)
-                .HasColumnName("postcode");
             entity.Property(e => e.Username)
                 .HasMaxLength(20)
                 .HasColumnName("username");
-        });
-
-        modelBuilder.Entity<Educationalbooking>(entity =>
-        {
-            entity.HasKey(e => new { e.CustomerId, e.EducationalbookingId })
-                .HasName("PRIMARY")
-                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-
-            entity.ToTable("educationalbooking");
-
-            entity.Property(e => e.CustomerId).HasColumnName("customerID");
-            entity.Property(e => e.EducationalbookingId).HasColumnName("educationalbookingID");
-
-            entity.HasOne(d => d.Customer).WithMany(p => p.Educationalbookings)
-                .HasForeignKey(d => d.CustomerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("edubk_fk_1");
-        });
-
-        modelBuilder.Entity<Educationalticket>(entity =>
-        {
-            entity.HasKey(e => e.EducationalbookingId).HasName("PRIMARY");
-
-            entity.ToTable("educationaltickets");
-
-            entity.HasIndex(e => e.AttractionId, "educationaltk_fk_2_idx");
-
-            entity.Property(e => e.EducationalbookingId)
-                .ValueGeneratedNever()
-                .HasColumnName("educationalbookingID");
-            entity.Property(e => e.AttractionId).HasColumnName("attractionID");
-            entity.Property(e => e.Bookingdate).HasColumnName("bookingdate");
-            entity.Property(e => e.Capacity).HasColumnName("capacity");
-            entity.Property(e => e.Prices).HasColumnName("prices");
-
-            entity.HasOne(d => d.Attraction).WithMany(p => p.Educationaltickets)
-                .HasForeignKey(d => d.AttractionId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("educationaltk_fk_2");
         });
 
         modelBuilder.Entity<Room>(entity =>
