@@ -2,12 +2,69 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    font-family: 'Eras ITC';
 }
 
 main {
     flex: 1;
-    font-family: 'Eras ITC';
 }
 
+.main-footer {
+    position: relative;
+    background-color: #345A54;
+    color: white;
+    padding: 20px 0;
+    margin-top: 50px;
+    text-align: center;
+}
 
+    .main-footer .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .main-footer h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: white;
+        text-align: left;
+    }
+
+    .main-footer p {
+        margin: 0;
+        line-height: 1.6;
+        font-size: 14px;
+        color: #f0f0f0;
+    }
+
+    .main-footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+
+        .main-footer ul li {
+            margin-bottom: 5px;
+        }
+
+            .main-footer ul li a {
+                color: white;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+.about-us {
+    text-align: left;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
 
