@@ -19,13 +19,13 @@
         <div class="image-side">
             <img src="/images/log-in image.jpg" id="mem" width="300" />
         </div>
-    
+
 
         <div class="form-side">
             <EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FormName="LoginForm">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
-                
+
                 <h2>Sign-in</h2>
 
                 <div class="input-box">
@@ -46,12 +46,12 @@
                     </section>
                 </div>
 
-                
+
                 <label style="color: white; background-color: #345A54">@message</label>
 
                 <br>
                 <button type="submit" class="submit-btn">Sign In</button>
-                
+
             </EditForm>
 
             <div class="sign-up-link">
@@ -59,7 +59,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 
@@ -73,7 +72,7 @@
     {
         if (UserSession.UserId != 0)
         {
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/Account");
         }
     }
 

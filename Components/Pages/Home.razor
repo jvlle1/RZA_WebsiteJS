@@ -9,13 +9,15 @@
 
 <PageTitle>Home</PageTitle>
 
+@* scaffold-dbcontext name="MySqlConnection" pomelo.entityframeworkcore.mysql -outputdir Models -force *@ @* to re scaffold databases *@
+
 <div class="hero-image">
     <div class="hero-text">
         <h1>Visit Riget Zoo Adventures!</h1>
     </div>
 
     <div style="float:left">
-        <a href="#about" class="btn-tix">Book Tickets</a>
+        <a href="/Tickets" class="btn-tix">Book Tickets</a>
     </div>
 </div>
 
@@ -36,7 +38,7 @@
                     <div class="text-overlay">
                         <h2>Membership</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
-                        <a href="#about" class="offer-btn">Become A Member</a>
+                        <a href="/Account" class="offer-btn">Become A Member</a>
                     </div>
                 </div>
 
@@ -45,17 +47,16 @@
                     <div class="text-under">
                         <h2>Hotel Stays</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit</p>
-                        <a href="#about" class="offer-btn">Book Hotel</a>
+                        <a href="/Bookinghotel" class="offer-btn">Book Hotel</a>
                     </div>
                 </div>
-
 
                 <div class="image-container">
                     <img src="/images/education image.jpg" id="mem" height="275" width="255" />
                     <div class="text-under">
-                        <h2>Educaitonal Acitvities</h2>
+                        <h2>Educational Activities</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit</p>
-                        <a href="#about" class="offer-btn">Check It out</a>
+                        <a href="/Education" class="offer-btn">Check It out</a>
                     </div>
                 </div>
             </div>
@@ -63,27 +64,3 @@
     </div>
 
 </section>
-
-
-@if (UserSession.UserId == 0)
-{
-    <h1>you need to log in</h1>
-}
-else
-{
-    <h1>your userid is @UserSession.UserId</h1>
-    <button onclick=@Modify>Modify your account</button>
-}
-
-@code {
-    private bool dialogShown = false;
-
-    private void ShowDialog()
-    {
-        dialogShown = true;
-    }
-    private void Modify()
-    {
-        NavigationManager.NavigateTo("/Modifyacc"); 
-    }
-}
