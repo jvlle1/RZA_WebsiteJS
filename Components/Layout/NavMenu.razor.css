@@ -1,7 +1,6 @@
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
     font-family: 'Eras ITC';
 }
 
@@ -13,11 +12,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
 }
 
     .navbar .navbar-logo h1 {
