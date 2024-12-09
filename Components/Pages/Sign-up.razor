@@ -34,10 +34,10 @@
                         <InputText @bind-Value="newCustomer.LastName" type="text" class="input-field" placeholder="Last Name" autocomplete="off" required />
                     </div>
                 </div>
-            
+
 
                 <div class="input-box">
-                    <InputText @bind-Value="newCustomer.Email" type="text" class="input-field" placeholder="Email" autocomplete="off" required />
+                    <InputText @bind-Value="newCustomer.Email" type="email" class="input-field" placeholder="Email" autocomplete="off" required />
                 </div>
 
                 <div class="input-box">
@@ -48,11 +48,11 @@
                     <InputText @bind-Value="newCustomer.Passsword" type="password" class="input-field" placeholder="Password" autocomplete="off" required />
                 </div>
 
-                <div>
-                    <label style="color: green">@message</label>
-                </div>
+                <label style="color: white; background-color: #345A54">@message</label>
+
+                <br>
                 <button type="submit" class="submit-btn">Sign Up</button>
-        </EditForm>
+            </EditForm>
         </div>
     </div>
 
@@ -64,21 +64,39 @@
     private string passsword;
     private string message;
 
-
-
     private async Task HandleValidSubmit()
     {
 
-        newCustomer.Passsword = PasswordUtils.HashPassword(newCustomer.Passsword);
+        bool usernameTaken = await CustomerService.CheckUsernameExistsAsync(newCustomer.Username);
+        if (usernameTaken) 
+        {
+            message = "Username Taken";
+            newCustomer = new Customer();
+            passsword = "";
+            StateHasChanged(); // Refresh UI to remove the message
 
-        // insert new user to database
-        await CustomerService.AddCustomerAsync(newCustomer);
-        message = "You have successfully registered";
-        
-        // clears out the form 
-        newCustomer = new Customer();
-        passsword = "";
-        NavigationManager.NavigateTo("/");
+            await Task.Delay(2000);
+            message = ""; // clears message
+            StateHasChanged(); 
 
+           
+        }
+        else 
+        {
+            
+            message = "You have successfully registered";
+            
+            StateHasChanged();
+            await Task.Delay(1000);
+  
+            // insert new user to database
+            newCustomer.Passsword = PasswordUtils.HashPassword(newCustomer.Passsword);
+            await CustomerService.AddCustomerAsync(newCustomer);
+            
+            // clears out the form
+            newCustomer = new Customer();
+            passsword = "";
+            NavigationManager.NavigateTo("/");
+        }
     }
 }
