@@ -12,8 +12,40 @@
 
 @if (customer != null)
 {
-    <h2>Hello, @customer.FirstName @customer.LastName </h2>
-    <button @onclick="OverToBooking">Book tickets</button>
+    <section id="top">
+        <h3>Account Page</h3>
+        <button onclick=@Logout>Log Out</button>
+    </section>
+
+    <section id="content">
+      
+
+        <div class="title">
+            <h2>Hello, @customer.FirstName @customer.LastName </h2>
+            <p>Welcome to Riget Zoo Adventures</p>
+        </div>
+
+        <div class="explore-container">
+            <div class="card">
+                <div class="crd-ctn">
+                    <button class="btn" @onclick="OverToBooking">Book Hotel tickets</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="crd-ctn">
+                    <button class="btn" onclick=@Modify>Modify Password</button>
+                </div>
+                
+            </div>
+        </div>
+      
+
+            
+       
+
+    </section>
+    
 }
 
 @code {
@@ -38,5 +70,14 @@
         NavigationManager.NavigateTo("/Bookinghotel");
     }
 
-   
+    private void Modify()
+    {
+        NavigationManager.NavigateTo("/Modifyacc");
+    }
+
+    private async Task Logout()
+    {
+        UserSession.UserId = 0;
+        NavigationManager.NavigateTo("/");
+    }
 }

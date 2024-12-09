@@ -98,3 +98,15 @@
     max-width: 310px; 
     object-fit: cover; 
 }
+
+a.btn {
+    background-color: #BAAE99;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 10px 19px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
